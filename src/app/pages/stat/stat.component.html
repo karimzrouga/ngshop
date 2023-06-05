@@ -1,0 +1,85 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="container-fluid page-body-wrapper" style="max-width:90% ; margin-left: 15%;">
+
+  <!-- partial -->
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-lg-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Prodcuts</h4>
+              <canvas baseChart width="600" height="200" chartType="doughnut" [data]="chartData2"
+                [labels]="chartprodsLabels">
+              </canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Users</h4>
+              <canvas baseChart width="600" height="200" chartType="doughnut" [data]="chartData1"
+                [labels]="chartusersLabels">
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style=" position: relative;left: 20%;
+      margin-top: 10%;
+     ">
+        <div class="row ">
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Users</h5>
+
+                    <span class="h2 font-weight-bold mb-0">{{nbuser}}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                      <i class="bi bi-eye"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                  <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> {{ peruser}}%</span>
+                  <span class="text-nowrap">Since last month</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Produits</h5>
+                    <span class="h2 font-weight-bold mb-0">{{nbprod}}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                      <i class="bi bi-eye"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                  <span class="text-success mr-2"><i class="fa fa-arrow-up"></i>{{perprod}}%</span>
+                  <span class="text-nowrap">Since last month</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,126 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="container">
+    <div class="row gutters">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="account-settings">
+                        <div class="user-profile">
+                            <div class="user-avatar">
+                                <img src={{user.image}} alt="logo Admin">
+                            </div>
+                            <h5 class="user-name">{{user.nom}} {{user.prenom}}</h5>
+                            <h6 class="user-email">{{user.email}}</h6>
+                        </div>
+                        <div class="about">
+                            <h5>{{user.role}} </h5>
+                            <p>Last Update {{user. updatedAt}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+
+                <form class="card-body" [formGroup]="adminForm" (ngSubmit)="edit()" method="POST">
+
+                    <div class="row gutters">
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="fullName">Name</label>
+                                <div *ngIf=" f['nom'].errors && f['nom'].errors['required']"
+                                    class="alert alert-danger ">
+                                    Name
+                                    is required.
+                                </div>
+                                <input type="text" class="form-control" id="fullName" formControlName="nom" name="nom"
+                                    [(ngModel)]=" user.nom" placeholder="Enter name">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="eMail">Family name</label>
+                                <div *ngIf=" f['prenom'].errors && f['prenom'].errors['required']"
+                                    class="alert alert-danger ">
+                                    FamilyName
+                                    is required.
+                                </div>
+                                <input type="email" class="form-control" id="eMail" name="prenom"
+                                    [(ngModel)]=" user.prenom" formControlName="prenom" placeholder="Enter family name">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <div *ngIf="   f['phone'].errors && f['phone'].errors['required']"
+                                    class="alert alert-danger ">
+                                    Phone
+                                    is required.
+                                </div>
+                                <input type="text" class="form-control" id="phone" name="phone" formControlName="phone"
+                                    [(ngModel)]=" user.phone" placeholder="Enter phone number">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="website">Email</label>
+                                <div *ngIf="   f['email'].errors && f['email'].errors['required']"
+                                    class="alert alert-danger ">
+                                    Email
+                                    is required.
+                                </div>
+                                <input type="email" formControlName="email" class="form-control" id="website"
+                                    name="email" [(ngModel)]=" user.email" placeholder="email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                        </div>
+                
+                        <div  [formGroup]="passwordForm" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label> Old Password</label>
+
+                                <input type="password" class="form-control" formControlName="oldpassword" 
+                                    placeholder="password">
+                            </div>
+                        </div>
+                        <div [formGroup]="passwordForm" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label> New Password</label>
+
+                                <input type="password" class="form-control"   formControlName="npassword" 
+                                    placeholder="password">
+                            </div>
+                        </div>
+               
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label>Image</label>
+                                <input type="file" name="image" [(ngModel)]="user.image" (change)="changeImage($event)"
+                                    accept="image/*" class="form-control" />
+                            </div>
+                            <br>
+                            <div class="form-group col-lg-6" *ngIf=" fileSelected">
+                                <img [src]="imageUrl" style="width: 150px; height: 150px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="text-right">
+                                <button type="submit" style="margin: 10px ;" id="submit" name="submit"
+                                    class="btn btn-primary">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
